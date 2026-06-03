@@ -1,13 +1,41 @@
 let players = [];
 
 const categories = {
-    "Ushqime": ["Mollë", "Banane", "Pica", "Hamburger", "Akullore", "Patate", "Djathë", "Çokollatë", "Sanduiç", "Portokall"],
-    "Kafshë": ["Mace", "Qen", "Luan", "Tigër", "Elefant", "Delfin", "Zog", "Peshk", "Ari", "Ujk"],
-    "Sporte": ["Futboll", "Basketboll", "Tenis", "Volejboll", "Not", "Atletikë", "Ping Pong", "Boks", "Hendboll", "Golf"],
-    "Objekte": ["Telefon", "Laptop", "Televizor", "Tavolinë", "Karrige", "Orë", "Çelës", "Libër", "Laps", "Çantë"],
-    "Vende": ["Kosovë", "Shqipëri", "Francë", "Gjermani", "Itali", "Spanjë", "Turqi", "Japoni", "Kanada", "Brazil"]
-};
+    "Ushqime": [
+        "Mollë", "Banane", "Pica", "Hamburger", "Akullore", "Patate", "Djathë", "Çokollatë", "Sanduiç", "Portokall",
+        "Sufllaqe", "Petulla", "Burek", "Tiramisu", "Karrotë", "Mandarina", "Dredhëz", "Spinaq", "Peshk", "Mish",
+        "Kofshë Pule", "Kek", "Gjizë", "Kos", "Qumësht", "Ujë", "Lëng Portokalli", "Mente", "Vezë", "Ullinj",
+        "Maltë", "Rrush", "Shalqiri", "Pjepër", "Kikirikë", "Badem", "Lajthi", "Mjaltë", "Gjalpë", "Kokoshka"
+    ],
 
+    "Kafshë": [
+        "Mace", "Qen", "Luan", "Tigër", "Elefant", "Delfin", "Zog", "Peshk", "Ari", "Ujk",
+        "Dhelpër", "Lepur", "Kaqorri", "Shqiponjë", "Gjirafë", "Zebër", "Majmun", "Kangaroo", "Panda", "Koala",
+        "Pinguin", "Balenë", "Peshkaqen", "Dallëndyshe", "Korbi", "Gjel", "Pulë", "Kal", "Lopë", "Dhi",
+        "Dele", "Derr", "Miu", "Breshkë", "Gjarpër", "Hardhucë", "Athe", "Krimb", "Flutur", "Bletë"
+    ],
+
+    "Sporte": [
+        "Futboll", "Basketboll", "Tenis", "Volejboll", "Not", "Atletikë", "Ping Pong", "Boks", "Hendboll", "Golf",
+        "Karate", "Kriket", "Ragbi", "Skijim", "Çiklizëm", "Gjimnastikë", "Kanoe", "Hokej", "Patinazh", "Formula 1",
+        "Moto GP", "Sërfin", "Shigjeta", "Bilardo", "Shah", "Maratonë", "Alpinizëm", "Zhytje", "Badminton", "Kërcim me Bunxhi",
+        "Gjuajtje me Hark", "Peshkim", "Shtytje Peshash", "Mundje", "Kikboks", "Kuaj", "Yoga", "Skateboard", "Regata", "Bowling"
+    ],
+
+    "Objekte": [
+        "Telefon", "Laptop", "Televizor", "Tavolinë", "Karrige", "Orë", "Çelës", "Libër", "Laps", "Çantë",
+        "Kuletë", "Pasqyrë", "Dritare", "Derë", "Shtrat", "Jastëk", "Batanije", "Pjatë", "Gotë", "Thikë",
+        "Pirun", "Lugë", "Filxhan", "Gjilpërë", "Gjenerator", "Kamera", "Kufje", "Bateri", "Dritë", "Llambë",
+        "Krehër", "Sapun", "Peshqir", "Furçë Dhëmbësh", "Gërshërë", "Letër", "Stilolaps", "Gomë", "Vizore", "Ombrellë"
+    ],
+
+    "Vende": [
+        "Kosovë", "Shqipëri", "Francë", "Gjermani", "Itali", "Spanjë", "Turqi", "Japoni", "Kanada", "Brazil",
+        "SHBA", "Angli", "Zvicër", "Austri", "Greqi", "Maqedoni", "Mali i Zi", "Kroaci", "Suedi", "Norvegji",
+        "Egjipt", "Marok", "Afrika e Jugut", "Australi", "Zelanda e Re", "Kinë", "Indi", "Meksikë", "Argjentinë", "Kolombi",
+        "Prishtinë", "Tiranë", "Paris", "Londër", "Romë", "Nju Jork", "Tokio", "Stamboll", "Berlin", "Madrid"
+    ]
+};
 let secretWord = "";
 let imposterIndex = -1;
 let currentPlayerIndex = 0;
