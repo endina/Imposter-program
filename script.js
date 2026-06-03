@@ -83,7 +83,7 @@ function renderTurnStepOne() {
     }
 
     card.innerHTML = `
-        <h2>Rradha e: ${players[currentPlayerIndex]}</h2>
+        <h2>Rradha : ${players[currentPlayerIndex]}</h2>
         <p>Pasi pajisja të jetë vetëm në dorën tënde, shtyp burtonin më poshtë.</p>
         <button class="btn-primary" onclick="renderTurnStepTwo()">Shfaq Fjalën</button>
     `;
@@ -112,7 +112,7 @@ function renderGameOver() {
     const card = document.getElementById("gameCard");
     card.innerHTML = `
         <h2>Të gjithë morën fjalët! 🔍</h2>
-        <p>Filloni diskutimin. Flisni me rradhë dhe zbuloni kush është Impostori.</p>
+        <p>Filloni diskutimin. </p>
         <button class="btn-success" onclick="resetToSetup()">Luaj Përsëri</button>
     `;
 }
