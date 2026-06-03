@@ -18,7 +18,7 @@ const categories = {
     "Sporte": [
         "Futboll", "Basketboll", "Tenis", "Volejboll", "Not", "Atletikë", "Ping Pong", "Boks", "Hendboll", "Golf",
         "Karate", "Kriket", "Ragbi", "Skijim", "Çiklizëm", "Gjimnastikë", "Hokej", "Patinazh", "Formula 1",
-         "Surf", "Shigjeta", "Bilardo", "Shah", "Maratonë", "Alpinizëm", "Zhytje", "Badminton", 
+        "Surf", "Shigjeta", "Bilardo", "Shah", "Maratonë", "Alpinizëm", "Zhytje", "Badminton", 
         "Peshkim", "Kuaj", "Yoga", "Skateboard", "Bowling"
     ],
 
@@ -36,16 +36,27 @@ const categories = {
         "Prishtinë", "Tiranë", "Paris", "Londër", "Romë", "Nju Jork", "Tokio", "Stamboll", "Berlin", "Madrid"
     ]
 };
+
 let secretWord = "";
 let imposterIndex = -1;
 let currentPlayerIndex = 0;
 
-// Auto-add triggers on Mobile Soft-Keyboard Done/Enter click
-document.getElementById("playerName").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        addPlayer();
-        // Minimizes keyboard focus to prevent layout shifting on small devices
-        document.getElementById("playerName").blur(); 
+// Safety initialization wrapper to load players and safely bind listeners on startup
+document.addEventListener("DOMContentLoaded", function() {
+    const savedPlayers = localStorage.getItem("impostor_players");
+    if (savedPlayers) {
+        players = JSON.parse(savedPlayers);
+        renderPlayers();
+    }
+
+    const playerInput = document.getElementById("playerName");
+    if (playerInput) {
+        playerInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                addPlayer();
+                document.getElementById("playerName").blur(); 
+            }
+        });
     }
 });
 
@@ -56,11 +67,15 @@ function addPlayer() {
     
     players.push(name);
     input.value = "";
+    
+    localStorage.setItem("impostor_players", JSON.stringify(players));
     renderPlayers();
 }
 
 function removePlayer(index) {
     players.splice(index, 1);
+    
+    localStorage.setItem("impostor_players", JSON.stringify(players));
     renderPlayers();
 }
 
