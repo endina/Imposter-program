@@ -2,31 +2,31 @@ let players = [];
 
 const categories = {
     "Ushqime": [
-        "Mollë", "Banane", "Pica", "Hamburger", "Akullore", "Patate", "Djathë", "Çokollatë", "Sanduiç", "Portokall",
-        "Sufllaqe", "Petulla", "Burek", "Tiramisu", "Karrotë", "Mandarina", "Dredhëz", "Spinaq", "Peshk", "Mish",
-        "Kofshë Pule", "Kek", "Gjizë", "Kos", "Qumësht", "Ujë", "Lëng Portokalli", "Mente", "Vezë", "Ullinj",
-        "Maltë", "Rrush", "Shalqiri", "Pjepër", "Kikirikë", "Badem", "Lajthi", "Mjaltë", "Gjalpë", "Kokoshka"
+        "Mollë", "Banane", "Pica", "Hamburger", "Akullore", "Patate", "Djathë", "Çokollatë", "Sandwich", "Portokall",
+        "Petulla", "Burek", "Tiramisu", "Karrotë", "Mandarina", "Dredhëz", "Spinaq", "Peshk", "Mish",
+        "Kofshë Pule", "Kek", "Gjizë", "Kos", "Qumësht", "Ujë", "Mente", "Vezë", "Ullinj",
+        "Rrush", "Shalqiri", "Pjepër", "Kikirikë", "Lajthi", "Mjaltë", "Gjalpë", "Kokoshka"
     ],
 
     "Kafshë": [
         "Mace", "Qen", "Luan", "Tigër", "Elefant", "Delfin", "Zog", "Peshk", "Ari", "Ujk",
-        "Dhelpër", "Lepur", "Kaqorri", "Shqiponjë", "Gjirafë", "Zebër", "Majmun", "Kangaroo", "Panda", "Koala",
+        "Dhelpër", "Lepur", "Shqiponjë", "Gjirafë", "Zebër", "Majmun", "Kangaroo", "Panda", "Koala",
         "Pinguin", "Balenë", "Peshkaqen", "Dallëndyshe", "Korbi", "Gjel", "Pulë", "Kal", "Lopë", "Dhi",
-        "Dele", "Derr", "Miu", "Breshkë", "Gjarpër", "Hardhucë", "Athe", "Krimb", "Flutur", "Bletë"
+        "Dele", "Derr", "Miu", "Breshkë", "Gjarpër", "Hardhucë", "Krimb", "Flutur", "Bletë"
     ],
 
     "Sporte": [
         "Futboll", "Basketboll", "Tenis", "Volejboll", "Not", "Atletikë", "Ping Pong", "Boks", "Hendboll", "Golf",
-        "Karate", "Kriket", "Ragbi", "Skijim", "Çiklizëm", "Gjimnastikë", "Kanoe", "Hokej", "Patinazh", "Formula 1",
-        "Moto GP", "Sërfin", "Shigjeta", "Bilardo", "Shah", "Maratonë", "Alpinizëm", "Zhytje", "Badminton", "Kërcim me Bunxhi",
-        "Gjuajtje me Hark", "Peshkim", "Shtytje Peshash", "Mundje", "Kikboks", "Kuaj", "Yoga", "Skateboard", "Regata", "Bowling"
+        "Karate", "Kriket", "Ragbi", "Skijim", "Çiklizëm", "Gjimnastikë", "Hokej", "Patinazh", "Formula 1",
+         "Surf", "Shigjeta", "Bilardo", "Shah", "Maratonë", "Alpinizëm", "Zhytje", "Badminton", 
+        "Peshkim", "Kuaj", "Yoga", "Skateboard", "Bowling"
     ],
 
     "Objekte": [
         "Telefon", "Laptop", "Televizor", "Tavolinë", "Karrige", "Orë", "Çelës", "Libër", "Laps", "Çantë",
         "Kuletë", "Pasqyrë", "Dritare", "Derë", "Shtrat", "Jastëk", "Batanije", "Pjatë", "Gotë", "Thikë",
         "Pirun", "Lugë", "Filxhan", "Gjilpërë", "Gjenerator", "Kamera", "Kufje", "Bateri", "Dritë", "Llambë",
-        "Krehër", "Sapun", "Peshqir", "Furçë Dhëmbësh", "Gërshërë", "Letër", "Stilolaps", "Gomë", "Vizore", "Ombrellë"
+        "Krehër", "Sapun", "Peshqir", "Furçë Dhëmbësh", "Gërshërë", "Letër", "Stilolaps", "Gomë", "Vizore", "Qader"
     ],
 
     "Vende": [
@@ -106,7 +106,7 @@ function renderTurnStepOne() {
     }
 
     card.innerHTML = `
-        <h2>Rradha e: ${players[currentPlayerIndex]} 📱</h2>
+        <h2>Rradha : ${players[currentPlayerIndex]} 📱</h2>
         <p>Merrni telefonin. Pasi pajisja të jetë vetëm në dorën tënde, shtyp butonin sekret më poshtë.</p>
         <button class="btn-primary" onclick="renderTurnStepTwo()">Shfaq Fjalën</button>
     `;
@@ -117,7 +117,7 @@ function renderTurnStepTwo() {
     const evaluatedWord = (currentPlayerIndex === imposterIndex) ? "IMPOSTOR 🕵️‍♂️" : secretWord;
 
     card.innerHTML = `
-        <p style="margin-bottom: 4px;">Fjala jote sekrete është:</p>
+        <p style="margin-bottom: 4px;">Fjala jote është:</p>
         <div class="secret-word-display">${evaluatedWord}</div>
         <p>Memorizoje fjalën, pastaj kaloja telefonin lojtarit tjetër.</p>
         <button class="btn-primary" onclick="advanceTurn()">Lojtari Tjetër</button>
