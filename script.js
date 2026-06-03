@@ -1,4 +1,3 @@
-// Local In-Memory Reactive States
 let players = [];
 
 const categories = {
@@ -9,26 +8,26 @@ const categories = {
     "Vende": ["Kosovë", "Shqipëri", "Francë", "Gjermani", "Itali", "Spanjë", "Turqi", "Japoni", "Kanada", "Brazil"]
 };
 
-// Global Runtime State Counters
 let secretWord = "";
 let imposterIndex = -1;
 let currentPlayerIndex = 0;
 
-// UX Shortcut Handler: Register Enter keypresses on the input bar
+// Auto-add triggers on Mobile Soft-Keyboard Done/Enter click
 document.getElementById("playerName").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         addPlayer();
+        // Minimizes keyboard focus to prevent layout shifting on small devices
+        document.getElementById("playerName").blur(); 
     }
 });
 
 function addPlayer() {
     const input = document.getElementById("playerName");
     const name = input.value.trim();
-    
-    if (!name) return; // Disallow empty whitespace rows
+    if (!name) return;
     
     players.push(name);
-    input.value = ""; // Clear active input value
+    input.value = "";
     renderPlayers();
 }
 
@@ -45,35 +44,31 @@ function renderPlayers() {
         list.innerHTML += `
             <li>
                 <span>${player}</span>
-                <button class="delete-btn" onclick="removePlayer(${index})">Fshij</button>
+                <button class="delete-btn" onclick="removePlayer(${index})">Heq</button>
             </li>
         `;
     });
 }
 
 function startGame() {
-    // Structural Safety Constraint Checklist
     if (players.length < 3) {
-        alert("Duhet të ketë të paktën 3 lojtarë për të luajtur!");
+        alert("Duhet të ketë të paktën 3 lojtarë!");
         return;
     }
 
     const selectedCategory = document.getElementById("category").value;
     const wordList = categories[selectedCategory];
     
-    // Core Game Generation Engine Logic
     secretWord = wordList[Math.floor(Math.random() * wordList.length)];
     imposterIndex = Math.floor(Math.random() * players.length);
     currentPlayerIndex = 0;
 
-    // View Manipulation Layer
     document.getElementById("setupView").classList.add("hidden");
     document.getElementById("gameView").classList.remove("hidden");
     
     renderTurnStepOne();
 }
 
-// Phase Step 1: Secure Intermediary Pass Screen
 function renderTurnStepOne() {
     const card = document.getElementById("gameCard");
     
@@ -83,21 +78,20 @@ function renderTurnStepOne() {
     }
 
     card.innerHTML = `
-        <h2>Rradha : ${players[currentPlayerIndex]}</h2>
-        <p>Pasi pajisja të jetë vetëm në dorën tënde, shtyp burtonin më poshtë.</p>
+        <h2>Rradha e: ${players[currentPlayerIndex]} 📱</h2>
+        <p>Merrni telefonin. Pasi pajisja të jetë vetëm në dorën tënde, shtyp butonin sekret më poshtë.</p>
         <button class="btn-primary" onclick="renderTurnStepTwo()">Shfaq Fjalën</button>
     `;
 }
 
-// Phase Step 2: Individual Blind Word Reveal
 function renderTurnStepTwo() {
     const card = document.getElementById("gameCard");
     const evaluatedWord = (currentPlayerIndex === imposterIndex) ? "IMPOSTOR 🕵️‍♂️" : secretWord;
 
     card.innerHTML = `
-        <p style="margin-bottom:10px;">Fjala jote sekrete është:</p>
+        <p style="margin-bottom: 4px;">Fjala jote sekrete është:</p>
         <div class="secret-word-display">${evaluatedWord}</div>
-        <p>Memorizoje dhe mos ia trego askujt!</p>
+        <p>Memorizoje fjalën, pastaj kaloja telefonin lojtarit tjetër.</p>
         <button class="btn-primary" onclick="advanceTurn()">Lojtari Tjetër</button>
     `;
 }
@@ -107,12 +101,11 @@ function advanceTurn() {
     renderTurnStepOne();
 }
 
-// Phase Step 3: Global Game Active Broadcast Screen
 function renderGameOver() {
     const card = document.getElementById("gameCard");
     card.innerHTML = `
         <h2>Të gjithë morën fjalët! 🔍</h2>
-        <p>Filloni diskutimin. </p>
+        <p>Filloni diskutimin e hapur. Kush mendoni se po gënjen?</p>
         <button class="btn-success" onclick="resetToSetup()">Luaj Përsëri</button>
     `;
 }
