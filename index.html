@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎭 Loja e Impostorit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎭 Impostori</h1>
+
+        <div id="setupView">
+            <span class="section-label">Lojtarët</span>
+            <div class="input-group">
+                <input type="text" id="playerName" placeholder="Shkruaj emrin e lojtarit..." autocomplete="off">
+                <button class="btn-primary" onclick="addPlayer()">Shto</button>
+            </div>
+
+            <ul id="playerList"></ul>
+
+            <div class="category-wrapper">
+                <span class="section-label">Zgjidh Kategorinë</span>
+                <select id="category">
+                    <option>Ushqime</option>
+                    <option>Kafshë</option>
+                    <option>Sporte</option>
+                    <option>Objekte</option>
+                    <option>Vende</option>
+                </select>
+            </div>
+
+            <button class="btn-success" onclick="startGame()">Fillo Lojën</button>
+        </div>
+
+        <div id="gameView" class="hidden">
+            <div id="gameCard" class="game-card">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
