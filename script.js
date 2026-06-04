@@ -166,6 +166,12 @@ function startGame() {
     renderTurnStepOne();
 }
 
+function goBackToSetup() {
+    if (confirm("Kthehu te faqja kryesore? Lojata do të humbasë.")) {
+        resetToSetup();
+    }
+}
+
 function renderTurnStepOne() {
     const card = document.getElementById("gameCard");
     if (currentPlayerIdx >= players.length) {
@@ -175,6 +181,9 @@ function renderTurnStepOne() {
     
     card.innerHTML = `
         <div class="game-card">
+            <div class="back-row">
+                <button class="back-btn" id="backToHomeBtn">← Kthehu</button>
+            </div>
             <div style="margin-bottom: 8px; color:#6b7280; font-size:0.75rem;">Rradha</div>
             <div class="turn-name">${escapeHtml(players[currentPlayerIdx])}</div>
             <div class="game-info">📱 Merre pajisjen</div>
@@ -183,6 +192,9 @@ function renderTurnStepOne() {
     `;
     const reveal = document.getElementById("revealBtn");
     if (reveal) reveal.onclick = () => renderTurnStepTwo();
+    
+    const backBtn = document.getElementById("backToHomeBtn");
+    if (backBtn) backBtn.onclick = () => goBackToSetup();
 }
 
 function renderTurnStepTwo() {
@@ -192,6 +204,9 @@ function renderTurnStepTwo() {
     
     card.innerHTML = `
         <div class="game-card">
+            <div class="back-row">
+                <button class="back-btn" id="backToHomeBtn">← Kthehu</button>
+            </div>
             <div class="category-tag">${escapeHtml(gameCategory)}</div>
             <div class="word-box">
                 <div class="word-display">${escapeHtml(displayWord)}</div>
@@ -202,6 +217,9 @@ function renderTurnStepTwo() {
     `;
     const next = document.getElementById("nextTurnBtn");
     if (next) next.onclick = () => advanceTurn();
+    
+    const backBtn = document.getElementById("backToHomeBtn");
+    if (backBtn) backBtn.onclick = () => goBackToSetup();
 }
 
 function advanceTurn() {
@@ -217,6 +235,9 @@ function renderDiscussionOnly() {
     const card = document.getElementById("gameCard");
     card.innerHTML = `
         <div class="game-card">
+            <div class="back-row">
+                <button class="back-btn" id="backToHomeBtn">← Kthehu</button>
+            </div>
             <div class="turn-name" style="font-size:1.5rem;">🗣️ Diskutoni</div>
             <div class="game-info">Të gjithë morën fjalët.<br>Diskutoni dhe gjeni impostorin.</div>
             <button class="btn-success full-btn" id="resetGameBtn">Luaj Përsëri</button>
@@ -224,6 +245,9 @@ function renderDiscussionOnly() {
     `;
     const reset = document.getElementById("resetGameBtn");
     if (reset) reset.onclick = () => resetToSetup();
+    
+    const backBtn = document.getElementById("backToHomeBtn");
+    if (backBtn) backBtn.onclick = () => goBackToSetup();
 }
 
 function resetToSetup() {
