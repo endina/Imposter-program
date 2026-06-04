@@ -23,6 +23,28 @@ body {
     border-radius: 32px;
     padding: 28px 22px 32px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+/* Game back button - placed at top, above title */
+.game-back-btn {
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.back-btn-nav {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    padding: 0 16px;
+    height: 38px;
+    font-size: 0.85rem;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.back-btn-nav:active {
+    transform: scale(0.96);
 }
 
 h1 {
@@ -175,26 +197,6 @@ button:active {
 /* game card - minimal */
 .game-card {
     text-align: center;
-}
-
-/* back button row */
-.back-row {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 16px;
-}
-
-.back-btn {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #94a3b8;
-    padding: 0 16px;
-    height: 40px;
-    font-size: 0.85rem;
-}
-
-.back-btn:active {
-    transform: scale(0.96);
 }
 
 .turn-name {
