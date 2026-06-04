@@ -3,40 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🎭 Loja e Impostorit</title>
+    <title>Impostori</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="app">
+        <h1>IMPOSTORI</h1>
 
-    <div class="container">
-        <h1>Impostori</h1>
-
+        <!-- SETUP VIEW -->
         <div id="setupView">
-            <span class="section-label">Lojtarët</span>
-            <div class="input-group">
-                <input type="text" id="playerName" placeholder="Shkruaj emrin..." autocomplete="off">
-                <button class="btn-primary" onclick="addPlayer()">Shto</button>
+            <div class="label">LOJTARËT</div>
+            <div class="row">
+                <input type="text" id="playerName" placeholder="Emri" autocomplete="off">
+                <button class="btn-primary" id="addPlayerBtn">Shto</button>
+            </div>
+            <ul id="playerList" class="player-list"></ul>
+
+            <!-- Simple settings bar -->
+            <div class="settings-mini">
+                <span class="random-hint">Kategoria</span>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="manual">Manual</button>
+                    <button class="mode-btn" data-mode="random">Random</button>
+                </div>
             </div>
 
-            <ul id="playerList"></ul>
-
-            <div class="category-wrapper">
-                <span class="section-label">Zgjidh Kategorinë</span>
-                <select id="category">
-                    <option>Ushqime</option>
-                    <option>Kafshë</option>
-                    <option>Sporte</option>
-                    <option>Objekte</option>
-                    <option>Vende</option>
+            <!-- Manual category select -->
+            <div id="manualCatBox" class="cat-row">
+                <select id="categorySelect">
+                    <option value="Ushqime">Ushqime</option>
+                    <option value="Kafshë">Kafshë</option>
+                    <option value="Sporte">Sporte</option>
+                    <option value="Objekte">Objekte</option>
+                    <option value="Vende">Vende</option>
                 </select>
             </div>
 
-            <button class="btn-success" onclick="startGame()">Fillo Lojën</button>
+            <!-- Random mode hint -->
+            <div id="randomCatBox" class="cat-row hidden">
+                <div style="text-align: center; font-size: 0.75rem; color: #6b7280;">Random</div>
+            </div>
+
+            <button class="btn-success" id="startGameBtn">Fillo Lojën</button>
+            <div style="font-size: 0.65rem; text-align: center; margin-top: 14px; color: #4b5563;">min 3 lojtarë</div>
         </div>
 
+        <!-- GAME VIEW -->
         <div id="gameView" class="hidden">
-            <div id="gameCard" class="game-card">
-                </div>
+            <div id="gameCard"></div>
         </div>
     </div>
 
